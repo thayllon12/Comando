@@ -1,0 +1,3 @@
+Suba TODOS estes arquivos soltos na raiz do repositório (substitua os de mesmo nome).
+Edite jamendo_id.txt e troque o texto pela sua chave gratuita do Jamendo (devportal.jamendo.com) para as músicas completas.
+No GitHub: Actions > Criar APK > Run workflow. APK em Artefatos.
