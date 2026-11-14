@@ -31,72 +31,12 @@ jobs:
           cp AndroidManifest.xml $P/app/src/main/
           cp themes.xml $R/values/
           cp ic_launcher.xml $R/mipmap-anydpi-v26/
-          cp ic_launcher_frente.xml ic_notificacao.xml $R/drawable/
-          cp index.html logo.jpg fundo1.jpg fundo2.jpg $A/
+          cp ic_launcher_frente.png ic_notificacao.xml $R/drawable/
+          cp index.html logo.jpg fundo1.jpg fundo2.jpg jamendo_id.txt $A/
           cp proguard-rules.pro $P/app/
-
-          cat > $P/settings.gradle <<'EOF'
-          pluginManagement {
-              repositories {
-                  google()
-                  mavenCentral()
-                  gradlePluginPortal()
-              }
-          }
-          dependencyResolutionManagement {
-              repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-              repositories {
-                  google()
-                  mavenCentral()
-              }
-          }
-          rootProject.name = "Comandante"
-          include ':app'
-          EOF
-
-          cat > $P/build.gradle <<'EOF'
-          plugins {
-              id 'com.android.application' version '8.5.2' apply false
-          }
-          EOF
-
-          cat > $P/gradle.properties <<'EOF'
-          org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
-          android.useAndroidX=true
-          android.nonTransitiveRClass=true
-          EOF
-
-          cat > $P/app/build.gradle <<'EOF'
-          plugins {
-              id 'com.android.application'
-          }
-          android {
-              namespace 'com.comandante.player'
-              compileSdk 34
-              defaultConfig {
-                  applicationId "com.comandante.player"
-                  minSdk 26
-                  targetSdk 34
-                  versionCode 1
-                  versionName "1.0"
-              }
-              buildTypes {
-                  release {
-                      minifyEnabled false
-                      signingConfig signingConfigs.debug
-                  }
-              }
-              compileOptions {
-                  sourceCompatibility JavaVersion.VERSION_17
-                  targetCompatibility JavaVersion.VERSION_17
-              }
-          }
-          dependencies {
-              implementation 'androidx.core:core:1.13.1'
-              implementation 'androidx.media:media:1.7.0'
-              implementation 'androidx.webkit:webkit:1.11.0'
-          }
-          EOF
+          cp settings.gradle gradle.properties $P/
+          cp root_build.gradle $P/build.gradle
+          cp app_build.gradle $P/app/build.gradle
 
       - name: Build
         working-directory: proj
